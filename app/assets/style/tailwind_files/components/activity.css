@@ -8,7 +8,7 @@
     /* 標題 */
     .activity-method .title,
     .activity-method .wrap {
-        @apply flex flex-wrap justify-center w-full xl:w-4/5 pb-6;
+        @apply flex flex-wrap justify-center w-full pb-6;
     }
 
     .activity-method img {
@@ -17,20 +17,6 @@
 
     .activity-method h1 {
         @apply text-primary relative w-full text-center font-medium;
-    }
-
-    .activity-method h1:before,
-    .activity-method h1:after {
-        @apply absolute border-t-3 w-5/12 md:w-4/12 sm:w-4/12 xs:w-3/12 xxs:w-2/12 border-primary top-4;
-        content: '';
-    }
-
-    .activity-method h1:before {
-        @apply left-0;
-    }
-
-    .activity-method h1:after {
-        @apply right-0;
     }
 
     /* 活動辦法內容 */
@@ -61,7 +47,7 @@
     }
 
     .activity-method .wrap .caption span {
-        @apply rounded-lg bg-black text-center text-white w-1/12 leading-10 my-5 mr-1.5 p-1.5;
+        @apply rounded-lg bg-black text-center text-white w-1/12 leading-10 my-5 mr-1.5 pt-1 px-3;
     }
 
     .activity-method .wrap p.small {
@@ -111,7 +97,7 @@
 
     /* 得獎名單 */
     .winner-wrap {
-        @apply flex flex-wrap justify-center bg-winder bg-repeat-x w-full px-32 md:p-0 sm:p-0 xs:p-0 xxs:p-0;
+        @apply flex flex-wrap justify-center bg-repeat-x w-full px-32 md:p-0 sm:p-0 xs:p-0 xxs:p-0;
     }
 
     .winner-wrap .group {
@@ -169,7 +155,7 @@
     }
 
     .winner-list table {
-        @apply w-full text-xl text-primary text-center font-medium w-6/12 mt-6;
+        @apply w-full text-xl text-primary text-center font-medium mt-6;
     }
 
     .winner-list table th {

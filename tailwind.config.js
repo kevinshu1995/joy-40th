@@ -49,7 +49,7 @@ module.exports = {
                 fadeIn: 'fade 0.5s ease-in both',
                 fadeOut: 'fade 0.5s ease-in reverse both',
                 float: 'float 3s ease-in-out infinite',
-                floatSm: 'floatSm 3s ease-in-out infinite',
+                floatSm: 'floatSm 1.5s ease-in-out infinite',
                 pulseScale: 'pulseScale .5 ease-in-out',
             },
             fontFamily: {

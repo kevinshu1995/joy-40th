@@ -11,7 +11,7 @@ const nav = new Nav({
     // * Nav 消失時使用的 class
     addClass: 'nav-hideBg',
     breakPoint: 1024,
-    scrollingHide: false,
+    scrollingHide: true,
     scrollSpy: true,
 })
 
