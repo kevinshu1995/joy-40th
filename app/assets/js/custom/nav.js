@@ -27,8 +27,6 @@ export default function Nav(
         if (_el_scrollBtn.length === 0) console.error('找不到 scrollBtn')
         else vm.scrollingBtnListener()
 
-        vm.scrollSpy()
-
         const debounceScroll = debounce(vm.scrollingListener, 30)
         window.addEventListener('scroll', () => {
             debounceScroll()

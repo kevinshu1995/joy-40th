@@ -50,7 +50,8 @@ module.exports = {
                 fadeOut: 'fade 0.5s ease-in reverse both',
                 float: 'float 3s ease-in-out infinite',
                 floatSm: 'floatSm 1.5s ease-in-out infinite',
-                pulseScale: 'pulseScale .5 ease-in-out',
+                pulseScale: 'pulseScale .5s ease-in-out',
+                spinBackFastForward: 'spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite',
             },
             fontFamily: {
                 genSenRounded: ['GenSenRounded', 'sans-serif'],

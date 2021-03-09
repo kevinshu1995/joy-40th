@@ -17,7 +17,7 @@
 
     /* * joy Nav background */
     .nav-joy:before {
-        @apply absolute w-h-full inset-0 bg-joy opacity-100 transition-all duration-300;
+        @apply absolute w-h-full inset-0 bg-joyWide opacity-100 transition-all duration-300;
         content: '';
         z-index: -1;
     }
@@ -68,7 +68,7 @@
 
     /* * Nav link list */
     .nav-btn {
-        @apply py-4 lg:py-1 px-4 w-full text-center rounded-3xl text-xl lg:text-base lg:hover:bg-white lg:hover:text-primary;
+        @apply py-4 lg:py-1 px-4 w-full text-center rounded-3xl text-xl bg-transparent lg:text-base lg:hover:bg-white lg:hover:text-primary transition-all duration-300;
     }
     .nav-btn.active {
         @apply lg:bg-white lg:text-primary lg:hover:bg-gray-50;

@@ -4,7 +4,7 @@
         @apply bg-wall;
     }
     .albumCard {
-        @apply bg-joy px-2 pt-4 pb-8 w-full md:max-w-md;
+        @apply bg-joyWide px-2 pt-4 pb-8 w-full md:max-w-md;
     }
     .albumCard .content {
         @apply relative;

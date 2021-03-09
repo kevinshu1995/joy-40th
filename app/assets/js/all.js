@@ -2,6 +2,7 @@ import { header_animate } from './custom/landingAnimation'
 import Nav from './custom/nav'
 import swiper_options from './custom/swiper'
 import SwiperCore, { Pagination } from 'swiper/core'
+import $ from 'jquery'
 
 SwiperCore.use([Pagination])
 
@@ -23,7 +24,6 @@ function hideAll() {
 window.onload = function () {
     // * skip => 是否跳過前面的動畫
     header_animate({ skip: false })
-
     nav.init()
 
     const swiper = new SwiperCore('.swiper-container', swiper_options)

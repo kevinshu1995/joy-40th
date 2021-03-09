@@ -4,8 +4,7 @@ const autoprefixer = require('autoprefixer')
 const minimist = require('minimist')
 const browserSync = require('browser-sync').create()
 const { envOptions } = require('./envOptions')
-const webpack = require('webpack-stream')
-// const TerserPlugin = require("terser-webpack-plugin");
+const webpackStream = require('webpack-stream')
 
 let options = minimist(process.argv.slice(2), envOptions)
 //現在開發狀態
@@ -82,34 +81,14 @@ function tailwindcss() {
         )
 }
 
-// function babel() {
-//     return gulp
-//         .src(envOptions.javascript.entry)
-//         .pipe($.sourcemaps.init())
-//         .pipe(
-//             $.babel({
-//                 presets: ['@babel/env'],
-//             })
-//         )
-//         // .pipe($.concat(envOptions.javascript.concat))
-//         .pipe($.sourcemaps.write('.'))
-//         .pipe(gulp.dest(envOptions.javascript.path))
-//         .pipe(
-//             browserSync.reload({
-//                 stream: true,
-//             })
-//         )
-// }
 function babel() {
     const webpack_config_prod = {
         mode: 'production',
         // TODO minify
-        // optimization: {
-        //     minimize: true,
-        //     minimizer: [new TerserPlugin({
-        //         test: /\.js(\?.*)?$/i,
-        //       })]
-        // },
+        optimization: {
+            minimize: true,
+            // minimizer: [new UglifyJsPlugin()],
+        },
         entry: {
             all: envOptions.javascript.entry,
         },
@@ -119,6 +98,7 @@ function babel() {
     }
     const webpack_config_dev = {
         mode: 'development',
+        devtool: 'source-map',
         entry: {
             all: envOptions.javascript.entry,
         },
@@ -126,28 +106,30 @@ function babel() {
             filename: '[name].js',
         },
     }
-    return gulp
-        .src(envOptions.javascript.entry)
-        .pipe($.if(options.env === 'development', $.sourcemaps.init()))
-        .pipe(
-            $.if(
-                options.env === 'development',
-                webpack(webpack_config_dev),
-                webpack(webpack_config_prod)
+    return (
+        gulp
+            .src(envOptions.javascript.entry)
+            // .pipe(webpackStream(webpack_config_dev))
+            .pipe(
+                $.if(
+                    options.env === 'development',
+                    webpackStream(webpack_config_dev),
+                    webpackStream(webpack_config_prod)
+                )
             )
-        )
-        .pipe(
-            $.babel({
-                presets: ['@babel/env'],
-            })
-        )
-        .pipe($.if(options.env === 'development', $.sourcemaps.write('.')))
-        .pipe(gulp.dest(envOptions.javascript.path))
-        .pipe(
-            browserSync.reload({
-                stream: true,
-            })
-        )
+            .pipe(
+                $.babel({
+                    presets: ['@babel/env'],
+                })
+            )
+            // .pipe($.if(options.env === 'production', $.concat(envOptions.javascript.concat)))
+            .pipe(gulp.dest(envOptions.javascript.path))
+            .pipe(
+                browserSync.reload({
+                    stream: true,
+                })
+            )
+    )
 }
 
 function vendorsJs() {
@@ -207,8 +189,8 @@ exports.build = gulp.series(
     layoutHTML,
     sass,
     tailwindcss,
-    babel,
-    vendorsJs
+    babel
+    // vendorsJs
 )
 
 exports.default = gulp.series(
@@ -219,6 +201,6 @@ exports.default = gulp.series(
     sass,
     tailwindcss,
     babel,
-    vendorsJs,
+    // vendorsJs,
     gulp.parallel(browser, watch)
 )

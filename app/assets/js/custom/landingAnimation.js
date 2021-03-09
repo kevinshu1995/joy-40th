@@ -1,7 +1,9 @@
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
+import Loading from './loading'
 gsap.registerPlugin(TextPlugin)
 
+const loading = new Loading()
 const video = new Video()
 
 function Video() {
@@ -10,6 +12,10 @@ function Video() {
     const is_mobile =
         window.getComputedStyle(document.getElementById('video-mobile')).display === 'block'
     this._video = is_mobile ? this.el_video_mobile : this.el_video_desktop
+
+    this.paused = (boolean) => {
+        return boolean ? this._video.pause() : this._video.play()
+    }
 
     this.canplay = () => {
         // this._video.muted = false
@@ -31,6 +37,11 @@ export function header_animate(options = { skip: false }) {
 
     skipBtn.addEventListener('click', skipToFinal)
 
+    function loadingInit() {
+        // * 如果點擊跳過，則跳過一切，並執行 skipToFinal()
+        loading.init(skipToFinal)
+    }
+
     function showNav() {
         document.querySelector('.navWrap').classList.remove('hide')
     }
@@ -41,17 +52,25 @@ export function header_animate(options = { skip: false }) {
             if (!options.skip && videoPromise !== undefined) {
                 videoPromise
                     .then(() => {
-                        // Automatic playback started!
-                        // Show playing UI.
+                        // * loading 完成後的動作
+                        video.paused(true)
+                        // * 如果讀取速度超快，給 loadingWrap 一個出現的機會
+                        setTimeout(() => {
+                            loading.loadingHide()
+                            video.paused(false)
+                        }, 1500)
                     })
                     .catch((error) => {
-                        master.play('final')
-                        showNav()
+                        loading.loadingHide()
+                        skipToFinal()
                     })
             }
         }
         const tl = gsap.timeline()
-        tl.set('section', { display: 'none' }).set('footer', { display: 'none' }).call(autoplay)
+        tl.call(loadingInit)
+            .set('section', { display: 'none' })
+            .set('footer', { display: 'none' })
+            .call(autoplay)
         return tl
     }
 
@@ -105,6 +124,7 @@ export function header_animate(options = { skip: false }) {
     master.add(cut1()).add(cut2()).add(cut3()).add(cut4(), 'cut4').add(cut5(), 'final')
 
     if (options.skip === false) {
+        // * 如果影片播完，才會播後面的動畫
         master_video.play()
         video.videoEnd(function () {
             return master.play()

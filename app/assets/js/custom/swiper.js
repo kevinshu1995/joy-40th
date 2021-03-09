@@ -5,6 +5,8 @@ export default {
     roundLengths: true,
     grabCursor: true,
     speed: 200,
+    centeredSlidesBounds: true,
+    preloadImages: false,
     breakpoints: {
         768: {
             slidesPerView: 'auto',

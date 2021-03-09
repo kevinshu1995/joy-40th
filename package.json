@@ -2,7 +2,8 @@
     "name": "project",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "sideEffects": false,
+    "private": true,
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "gulp build --env development",
@@ -18,8 +19,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@babel/core": "^7.13.8",
-        "@babel/preset-env": "^7.13.9",
+        "@babel/core": "^7.13.10",
+        "@babel/preset-env": "^7.13.10",
         "@fortawesome/fontawesome-free": "^5.15.2",
         "bootstrap": "^5.0.0-beta2",
         "browser-sync": "^2.26.14",
@@ -47,16 +48,18 @@
         "npm": "^7.6.0",
         "onchange": "^7.1.0",
         "postcss-import": "^14.0.0",
-        "swiper": "^6.4.15"
+        "swiper": "^6.5.0",
+        "uglifyjs-webpack-plugin": "^2.2.0"
     },
     "devDependencies": {
-        "autoprefixer": "^10.2.4",
+        "autoprefixer": "^10.2.5",
         "gulp-cssnano": "^2.1.3",
         "gulp-prettier": "^3.0.0",
         "gulp-purgecss": "^4.0.2",
         "postcss": "^8.2.7",
         "tailwindcss": "^2.0.3",
         "terser-webpack-plugin": "^5.1.1",
+        "webpack": "^5.24.4",
         "webpack-stream": "^6.1.2"
     }
 }

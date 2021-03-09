@@ -11,19 +11,12 @@
         @apply px-4;
     }
 
-    .bg-joy {
-        background-image: url('./../images/index/04/index_04_bg.png');
-    }
     .bg-joyWide {
         background-image: url('./../images/index/bg_menu_01.png');
     }
 
     .bg-wall {
         background-image: url('./../images/index/index_bg_texture.png');
-    }
-
-    .bg-block-gray {
-        background-image: url('./../images/index/index_bg_glay.png');
     }
 
     .bg-winder {
@@ -50,9 +43,6 @@
     }
 
     /* * joy Nav background */
-    /* .nav-joy {
-        @apply bg-joy;
-    } */
     .bg-icons {
         background-image: url('./../images/index/index_01_cut3_icons.png');
     }

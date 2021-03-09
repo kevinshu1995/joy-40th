@@ -51,4 +51,7 @@
     a {
         @apply inline-block;
     }
+    button:focus {
+        @apply outline-none;
+    }
 }

@@ -2,7 +2,7 @@
 @layer components {
     /* 活動辦法 */
     .activity-method {
-        @apply flex flex-wrap justify-center w-full bg-block-gray p-10 sm:p-4 xs:p-4 xxs:p-4;
+        @apply flex flex-wrap justify-center w-full py-10 sm:p-4 xs:p-4 xxs:p-4;
     }
 
     /* 標題 */
@@ -47,7 +47,7 @@
     }
 
     .activity-method .wrap .caption span {
-        @apply rounded-lg bg-black text-center text-white w-1/12 leading-10 my-5 mr-1.5 pt-1 px-3;
+        @apply rounded-lg bg-black text-center text-white w-1/12 leading-10 my-5 mr-1.5 py-1 px-3;
     }
 
     .activity-method .wrap p.small {
@@ -68,7 +68,7 @@
     }
 
     .awards .wrap {
-        @apply md:w-3/6 sm:w-full md:justify-center sm:justify-start mb-4;
+        @apply md:w-3/6 sm:w-full md:justify-center sm:justify-start flex-nowrap mb-4;
     }
 
     .awards .wrap p.title {
@@ -97,7 +97,7 @@
 
     /* 得獎名單 */
     .winner-wrap {
-        @apply flex flex-wrap justify-center bg-repeat-x w-full px-32 md:p-0 sm:p-0 xs:p-0 xxs:p-0;
+        @apply flex flex-wrap justify-center bg-repeat-x w-full lg:px-32;
     }
 
     .winner-wrap .group {
@@ -113,12 +113,12 @@
     }
 
     .winner-wrap .title-group .icon {
-        @apply relative flex justify-center w-16 z-99;
+        @apply relative flex justify-center w-16 z-30;
     }
 
     .winner-wrap .title-group .icon:before,
     .winner-wrap .title-group .icon:after {
-        @apply absolute rounded-full w-16 h-16 left-0;
+        @apply absolute z-20 rounded-full w-16 h-16 left-0;
         content: '';
     }
 
@@ -131,7 +131,7 @@
     }
 
     .winner-wrap .title-group .icon img {
-        @apply z-99 my-4 pb-0;
+        @apply z-30 my-4 pb-0;
     }
 
     .winner-wrap .title-group .title-con {
@@ -168,7 +168,7 @@
 
     /* 注意事項 */
     .note-more {
-        @apply flex justify-center items-center;
+        @apply flex justify-center items-center w-full;
     }
 
     .note-more a {
